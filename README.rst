@@ -21,5 +21,16 @@ Available states
 ``repos``
 -------------------------------------
 
-Installs the repos package,
-and starts the associated repos service.
+Installs the repos configuration
+
+* Creates users, groups, and directories for repos, git, hg
+* Installs the pyrpo package
+
+TODO: * (Testing) Install the mercurial-server formula  
+
+
+``repos.pyrpo``
+-------------------------------------
+
+Installs the pyrpo package with pip.
+

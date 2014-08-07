@@ -1,3 +1,2 @@
-repos::
+repos:
   lookup:
-    master: repos-master
