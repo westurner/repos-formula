@@ -1,8 +1,8 @@
 ===============================
-repos
+repos-formula
 ===============================
 
-Salt formula for managi
+Salt formula for managing a local set of {git and hg} repositories
 
 * Free software: BSD license
 * SaltStack Formula
