@@ -7,16 +7,26 @@ repos-user:
   user.present:
     - name: {{ repos.user }}
     - gid_from_name: True
+    - home: {{ repos.home }}
+    - shell: /bin/bash
+    - comment: "Repos user"
+    - empty_password: True
 
 repos-git-user:
   user.present:
     - name: {{ repos.git_user }}
     - gid_from_name: True
+    - home: {{ repos.git_path }}
+    - shell: /bin/bash ## TODO
+    - comment: "Git user"
 
 repos-hg-user:
   user.present:
     - name: {{ repos.hg_user }}
     - gid_from_name: True
+    - home: {{ repos.hg_path }}
+    - shell: /bin/bash ## TODO
+    - comment: "Hg user"
 
 
 # Directories
@@ -37,7 +47,9 @@ repos-git-directory:
     - user: {{ repos.git_user }}
     - group: {{ repos.group }}
     - require:
-      - user: repos-user
+      - user:
+        - repos-git-user
+        - repos-user
 
 repos-hg-directory:
   file.directory:
@@ -46,7 +58,9 @@ repos-hg-directory:
     - user: {{ repos.hg_user }}
     - group: {{ repos.group }}
     - require:
-      - user: repos-user
+      - user:
+        - repos-hg-user
+        - repos-user
 
 # Packages
 include:
